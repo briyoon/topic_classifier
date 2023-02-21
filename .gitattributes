@@ -1,0 +1,2 @@
+resources/testing.csv filter=lfs diff=lfs merge=lfs -text
+resources/training.csv filter=lfs diff=lfs merge=lfs -text
