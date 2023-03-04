@@ -3,7 +3,7 @@ from datetime import datetime
 
 import pandas as pd
 
-from LogisticRegression import *
+from logistic_regression import *
 
 COLUMN_WISE_AXIS = 1
 
