@@ -1,8 +1,5 @@
-import time
-from datetime import datetime
-import pandas as pd
-from logistic_regression import *
 from data_processing import *
+from logistic_regression import *
 
 train_path = "/Users/estefan/Desktop/cs429529-project-2-topic-categorization/training.csv"
 
@@ -13,11 +10,11 @@ total_iterations = 1_000
 # can specify rows and label path
 [x, y, c] = get_training_data(training_path=train_path, rows=1_000)
 
-x_train = x[0:500, :]
-y_train = y[0:500]
+x_train = x
+y_train = y
 
-x_test = x[500:1000, :]
-y_test = y[500:1000]
+x_test = x
+y_test = y
 
 [w, t] = lg_fit(learning_rate=learning_rate,
                 penalty=penalty_term,
@@ -34,5 +31,5 @@ result_str = get_result_str(learning_rate=learning_rate,
                             train_size=len(y_train),
                             t=t)
 
-# can ignore w, default is none
-record_test_result(result_str, w)
+# can ignore weights or confusion matrix, default is none
+record_test_result(result_str, w, confusion_mat)

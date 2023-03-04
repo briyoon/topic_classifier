@@ -68,7 +68,7 @@ def get_result_str(learning_rate, penalty, iterations, accuracy, train_size, tes
     return res
 
 
-def record_test_result(result: str, w=None):
+def record_test_result(result: str, w=None, conf=None):
     test_index = get_test_index()
     test_record = str(test_index)
     test_record += ' - '
@@ -79,12 +79,18 @@ def record_test_result(result: str, w=None):
     file.close()
 
     if w is not None:
-        np.savetxt(f'results/WEIGHTS_{test_index}.csv',
-                   w, delimiter=',')
+        np.save(f'results/WEIGHTS_{test_index}.npy', w)
+
+    if conf is not None:
+        np.save(f'results/CMAT_{test_index}.npy', conf)
 
     incr_test_index()
 
 
-def get_saved_weight(path: str):
-    np_arr = np.loadtxt(path, dtype=np.float64, delimiter=',')
+def get_saved_weight(path: str, csv=False):
+    if csv:
+        np_arr = np.loadtxt(path, dtype=np.float64, delimiter=',')
+    else:
+        np_arr = np.load(path)
+
     return np_arr

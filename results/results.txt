@@ -1,5 +1,2 @@
 V1 acc 99.73%
 V1.1 acc 87.15%
-1 - 2023-03-04 14:17:38 rate=0.01, penalty=0.01, iter=1000, acc=0.05, t=84.13s, train=500, test=500
-2 - 2023-03-04 14:24:31 rate=0.01, penalty=0.01, iter=1000, acc=0.04, t=83.61s, train=500, test=500
-3 - 2023-03-04 14:31:00 rate=0.01, penalty=0.01, iter=1000, acc=0.05, t=101.95s, train=500, test=500
