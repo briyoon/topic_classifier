@@ -18,15 +18,15 @@ def get_prob_matrix(samples, weights):
     p_mat = np.matmul(weights, x_transpose)
 
     # TODO: test setting to ones after exponentiation / other options
-    # set last row to 1's
-    p_mat[k - 1] = np.ones(shape=(1, m))
+    # avoid overflow (only do rows 1 to k-1)
     for i in range(0, len(p_mat[0])):
-        max_term = max(p_mat[:, i])
-        p_mat[:, i] -= max_term
+        max_term = max(p_mat[0:k-1, i])
+        p_mat[0:k-1, i] -= max_term
 
     # P[i][j] = exp(P[i][j])
     p_mat = np.vectorize(np.exp)(p_mat)
-
+    # set last row to 1's
+    p_mat[k - 1] = np.ones(shape=(1, m))
     # axis 0 -> cols, axis 1 -> rows
     column_sums = p_mat.sum(axis=0)
 

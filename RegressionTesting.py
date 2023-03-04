@@ -55,11 +55,11 @@ for sample_ind in range(0, len(y)):
     if predicted == y[sample_ind]:
         correct += 1
 
-version = 1
-date = datetime.today().strftime('%Y-%m-%d')
-np.savetxt(f'ClassifierWeightsV{version}_'
-           f'{date}_a={learning_rate}_'
-           f'p={penalty_term}_iter={iterations}.csv',
+version = 1.1
+date = str(datetime.now()).replace(" ", "T")
+np.savetxt(f'CWV{version}_'
+           f'{date}_{learning_rate}_'
+           f'{penalty_term}_{iterations}.csv',
            w, delimiter=',')
 print(f'accuracy={correct / total}')
 print(f'total_time_{total_iterations}_iterations={time.time() - start}')
