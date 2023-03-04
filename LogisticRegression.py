@@ -20,8 +20,8 @@ def get_prob_matrix(samples, weights):
     # TODO: test setting to ones after exponentiation / other options
     # avoid overflow (only do rows 1 to k-1)
     for i in range(0, len(p_mat[0])):
-        max_term = max(p_mat[0:k-1, i])
-        p_mat[0:k-1, i] -= max_term
+        col_sum = sum(p_mat[0:k-1, i])
+        p_mat[:, i] *= (1 / col_sum)
 
     # P[i][j] = exp(P[i][j])
     p_mat = np.vectorize(np.exp)(p_mat)
