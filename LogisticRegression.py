@@ -1,3 +1,5 @@
+import time
+
 import numpy as np
 
 
@@ -57,3 +59,66 @@ def get_delta_matrix(class_list, example_classes):
         delta_mat[delta_row][delta_col] = 1
 
     return delta_mat
+
+
+# m = num examples, n = num features, k = num classes
+# examples = X (m,n), target = Y (m,1), classes = K (k,1)
+def lg_fit(learning_rate, penalty, max_iterations,
+           examples: np.typing.NDArray,
+           target: np.typing.NDArray,
+           classes: any,
+           show_time: False):
+    k = len(classes)
+    n = len(examples[0])
+
+    start = time.time()
+    x = get_padded_examples(examples)
+    w = np.random.rand(k, n + 1)
+    delta = get_delta_matrix(class_list=classes, example_classes=target)
+    p_mat = get_prob_matrix(samples=x, weights=w)
+    iterations = 0
+
+    while iterations < max_iterations:
+        if show_time and iterations % (max_iterations / 100) == 0:
+            print('.', end="")
+        p_mat = get_prob_matrix(samples=x, weights=w)
+        error_mat = np.add(delta, (-1 * p_mat))
+        sample_error_mat = np.matmul(error_mat, x)
+        penalty_mat = -penalty * w
+        weight_update_mat = learning_rate * (np.add(sample_error_mat, penalty_mat))
+        w = np.add(w, weight_update_mat)
+        iterations += 1
+    end = time.time()
+
+    return [p_mat, w, end - start]
+
+
+def lg_test(x_test: np.typing.NDArray,
+            y_test: np.typing.NDArray,
+            weights: np.typing.NDArray,
+            classes: any):
+    m = len(y_test)
+    k = len(classes)
+    p_mat = get_prob_matrix(samples=x_test, weights=weights)
+    confusion = np.zeros(shape=(k, k))
+    correct = 0
+
+    for instance in range(0, m):
+        predicted = -1
+        actual = y_test[instance]
+        for cls in range(0, k):
+            if p_mat[cls][instance] > predicted:
+                predicted = cls
+
+        if predicted == -1:
+            print(f'error, no max prediction found for class,instance={instance}')
+            continue
+
+        if predicted == actual:
+            correct += 1
+        else:
+            confusion[predicted][actual] += 1
+
+    accuracy = correct / m
+
+    return [accuracy, confusion]
