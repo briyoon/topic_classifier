@@ -89,7 +89,10 @@ def lg_fit(learning_rate, penalty, max_iterations,
         weight_update_mat = learning_rate * (np.add(sample_error_mat, penalty_mat))
         w = np.add(w, weight_update_mat)
         iterations += 1
+
     end = time.time()
+    if show_time:
+        print('')
 
     return [w, end - start]
 
@@ -114,10 +117,12 @@ def lg_test(x_test: npt.NDArray,
 
     for instance in range(0, m):
         predicted = -1
-        actual = class_to_ind[y_test[instance]]
+        max_prob = -1
+        actual = y_test[instance]
         for cls in range(0, k):
-            if p_mat[cls][instance] > predicted:
-                predicted = cls
+            if p_mat[cls][instance] > max_prob:
+                predicted = classes[cls]
+                max_prob = p_mat[cls][instance]
 
         if predicted == -1:
             print(f'error, no max prediction found for class, instance={instance}')
@@ -126,7 +131,7 @@ def lg_test(x_test: npt.NDArray,
         if predicted == actual:
             correct += 1
         else:
-            confusion[predicted][actual] += 1
+            confusion[class_to_ind[predicted]][class_to_ind[actual]] += 1
 
     accuracy = correct / m
 

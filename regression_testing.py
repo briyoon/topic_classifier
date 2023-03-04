@@ -14,10 +14,10 @@ total_iterations = 1_000
 [x, y, c] = get_training_data(training_path=train_path, rows=1_000)
 
 x_train = x[0:500, :]
-y_train = y[0:500, :]
+y_train = y[0:500]
 
 x_test = x[500:1000, :]
-y_test = y[500:1000, :]
+y_test = y[500:1000]
 
 [w, t] = lg_fit(learning_rate=learning_rate,
                 penalty=penalty_term,
