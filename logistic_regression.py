@@ -1,6 +1,7 @@
 import time
 
 import numpy as np
+import numpy.typing as npt
 
 
 # add column of ones to left of examples
@@ -64,10 +65,10 @@ def get_delta_matrix(class_list, example_classes):
 # m = num examples, n = num features, k = num classes
 # examples = X (m,n), target = Y (m,1), classes = K (k,1)
 def lg_fit(learning_rate, penalty, max_iterations,
-           examples: np.typing.NDArray,
-           target: np.typing.NDArray,
+           examples: npt.NDArray,
+           target: npt.NDArray,
            classes: any,
-           show_time: False):
+           show_time=False):
     k = len(classes)
     n = len(examples[0])
 
@@ -90,28 +91,36 @@ def lg_fit(learning_rate, penalty, max_iterations,
         iterations += 1
     end = time.time()
 
-    return [p_mat, w, end - start]
+    return [w, end - start]
 
 
-def lg_test(x_test: np.typing.NDArray,
-            y_test: np.typing.NDArray,
-            weights: np.typing.NDArray,
+def lg_test(x_test: npt.NDArray,
+            y_test: npt.NDArray,
+            weights: npt.NDArray,
             classes: any):
     m = len(y_test)
     k = len(classes)
+
+    if len(x_test[0]) != len(weights[0]):
+        x_test = get_padded_examples(x_test)
+
     p_mat = get_prob_matrix(samples=x_test, weights=weights)
     confusion = np.zeros(shape=(k, k))
     correct = 0
 
+    class_to_ind = dict()
+    for ind in range(0, k):
+        class_to_ind[classes[ind]] = ind
+
     for instance in range(0, m):
         predicted = -1
-        actual = y_test[instance]
+        actual = class_to_ind[y_test[instance]]
         for cls in range(0, k):
             if p_mat[cls][instance] > predicted:
                 predicted = cls
 
         if predicted == -1:
-            print(f'error, no max prediction found for class,instance={instance}')
+            print(f'error, no max prediction found for class, instance={instance}')
             continue
 
         if predicted == actual:
