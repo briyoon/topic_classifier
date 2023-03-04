@@ -20,7 +20,7 @@ def get_prob_matrix(samples, weights):
     # TODO: test setting to ones after exponentiation / other options
     # avoid overflow (only do rows 1 to k-1)
     for i in range(0, len(p_mat[0])):
-        col_sum = sum(p_mat[0:k-1, i])
+        col_sum = sum(p_mat[:, i])
         p_mat[:, i] *= (1 / col_sum)
 
     # P[i][j] = exp(P[i][j])
