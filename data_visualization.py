@@ -27,12 +27,49 @@ def plot_confusion_matrix(matrix):
     plt.show()
 
 
-def plot_average_class_weights(weights):
-    x = range(0, len(weights[0]))
-    plt.scatter(x, weights[0], alpha=0.3)
+def feature_scatter_plot(data, x_label, y_label, num_rows=1):
+    x = range(0, len(data[0]))
+    for row in range(0, num_rows):
+        plt.scatter(x, data[row], alpha=0.3, s=4)
+    plt.xlabel(x_label, fontsize=14)
+    plt.ylabel(y_label, fontsize=14)
+    plt.show()
 
 
-conf_mat_path = '/Users/estefangonzales/Desktop/CourseWork/2023/CS429/P2-NBLG/confusion_matrices'
-path = f'{conf_mat_path}/CMAT_20.npy'
-data = np.load(path)
-plot_confusion_matrix(data)
+# k = num classes, n = num features + 1, start = first test index, end = last test index
+def get_weight_sum(weight_path, k, n, start, end):
+    summation = np.zeros(shape=(k, n))
+    for test in range(start, end + 1):
+        weights = np.load(f'{weight_path}/WEIGHTS_{test}.npy')
+        summation = np.add(weights, summation)
+    return summation
+
+
+# returns mean and variance numpy arrays for the weights
+# will do so for tests from start to end (based on indices)
+# should change to list of test indices
+def get_weight_statistics(weight_path, k, n, start, end):
+    size = end - start
+    norm = 1 / (size + 1)
+    mean = get_weight_sum(weight_path, k, n, start, end)
+    mean *= norm
+    variance = np.zeros(shape=(k, n))
+    for test in range(start, end + 1):
+        weights = np.load(f'{weight_path}/WEIGHTS_{test}.npy')
+        diff = np.add(weights, -1 * mean)
+        variance = np.add(variance, np.square(diff))
+    variance *= (1 / size)
+    return [mean, variance]
+
+
+weight_mat_path = '/Users/estefangonzales/Desktop/CourseWork/2023/CS429/P2-NBLG/weights'
+rows = 20
+cols = 61189
+first_test = 1
+last_test = 10
+
+# results from the varied learning rate tests
+[lr_mean, lr_var] = get_weight_statistics(weight_mat_path, rows, cols, first_test, last_test)
+lr_std_dev = np.sqrt(lr_var)
+feature_scatter_plot(lr_std_dev, 'Feature', 'StdDev', num_rows=1)
+
