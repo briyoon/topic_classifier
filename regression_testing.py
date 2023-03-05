@@ -2,16 +2,16 @@ from data_processing import *
 from logistic_regression import *
 
 
-penalty_term = 0.01
-total_iterations = 1_000
+penalty_term = 0.75
+learning_rate = 0.01
+total_iterations = 2_000
 train_size = 4_500
 ex_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/examples.npy'
 ex_class_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/example_classes.npy'
 
 [x, y, c] = get_training_data_bin(example_path=ex_path, example_class_path=ex_class_path)
 
-for i in range(1, 11):
-    learning_rate = i * (10 ** -3)
+for i in range(0, 3):
     indices = np.random.permutation(x.shape[0])
     train, test = indices[:train_size], indices[train_size:]
     x_train, x_test = x[train, :], x[test, :]
@@ -34,3 +34,5 @@ for i in range(1, 11):
 
     # can ignore weights or confusion matrix, default is none
     record_test_result(result_str, w, confusion_mat)
+
+    penalty_term /= 2
