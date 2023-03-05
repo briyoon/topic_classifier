@@ -94,3 +94,10 @@ def get_saved_weight(path: str, csv=False):
         np_arr = np.load(path)
 
     return np_arr
+
+
+def get_training_data_bin(example_path: str, example_class_path: str, label_path=LABEL_PATH):
+    c = get_classes(label_path)
+    x = np.load(example_path)
+    y = np.load(example_class_path)
+    return [x, y, c]

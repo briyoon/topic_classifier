@@ -1,21 +1,21 @@
 from data_processing import *
 from logistic_regression import *
 
-train_path = "/Users/estefan/Desktop/cs429529-project-2-topic-categorization/training.csv"
 
-learning_rate = 0.01
+penalty_term = 0.01
 total_iterations = 1_000
-
 train_size = 4_500
-# can specify rows and label path
-[x, y, c] = get_training_data(training_path=train_path)
+ex_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/examples.npy'
+ex_class_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/example_classes.npy'
 
-for i in range(1, 10):
-    penalty_term = i ** (10 ** -3)
+[x, y, c] = get_training_data_bin(example_path=ex_path, example_class_path=ex_class_path)
+
+for i in range(1, 11):
+    learning_rate = i * (10 ** -3)
     indices = np.random.permutation(x.shape[0])
     train, test = indices[:train_size], indices[train_size:]
     x_train, x_test = x[train, :], x[test, :]
-    y_train, y_test = y[train, :], y[test, :]
+    y_train, y_test = y[train], y[test]
 
     [w, t] = lg_fit(learning_rate=learning_rate,
                     penalty=penalty_term,
