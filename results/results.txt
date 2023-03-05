@@ -10,3 +10,13 @@ V1.1 acc 87.15%
 8 - 2023-03-04 17:53:25 rate=0.008, penalty=0.01, iter=1000, acc=0.71, t=695.38s, train=4500, test=7500
 9 - 2023-03-04 18:05:43 rate=0.009000000000000001, penalty=0.01, iter=1000, acc=0.7, t=701.13s, train=4500, test=7500
 10 - 2023-03-04 18:18:06 rate=0.01, penalty=0.01, iter=1000, acc=0.7, t=702.24s, train=4500, test=7500
+11 - 2023-03-04 20:38:22 rate=0.01, penalty=0.01, iter=1000, acc=0.7, t=697.25s, train=4500, test=7500
+12 - 2023-03-04 21:01:48 rate=0.01, penalty=0.01, iter=2000, acc=0.69, t=1369.91s, train=4500, test=7500
+13 - 2023-03-04 21:36:39 rate=0.01, penalty=0.01, iter=3000, acc=0.71, t=2055.74s, train=4500, test=7500
+14 - 2023-03-04 23:04:44 rate=0.01, penalty=0.01, iter=4000, acc=0.69, t=2717.83s, train=4500, test=7500
+15 - 2023-03-05 00:02:32 rate=0.01, penalty=0.01, iter=5000, acc=0.7, t=3432.36s, train=4500, test=7500
+16 - 2023-03-05 01:13:09 rate=0.01, penalty=0.01, iter=6000, acc=0.7, t=4199.39s, train=4500, test=7500
+17 - 2023-03-05 02:32:11 rate=0.01, penalty=0.01, iter=7000, acc=0.7, t=4704.06s, train=4500, test=7500
+18 - 2023-03-05 04:03:19 rate=0.01, penalty=0.01, iter=8000, acc=0.71, t=5430.3s, train=4500, test=7500
+19 - 2023-03-05 05:44:45 rate=0.01, penalty=0.01, iter=9000, acc=0.69, t=6048.79s, train=4500, test=7500
+20 - 2023-03-05 07:38:05 rate=0.01, penalty=0.01, iter=10000, acc=0.7, t=6762.54s, train=4500, test=7500
