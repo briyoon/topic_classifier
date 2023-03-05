@@ -68,12 +68,9 @@ def get_result_str(learning_rate, penalty, iterations, accuracy, train_size, tes
     return res
 
 
-def record_test_result(result: str, w=None, conf=None):
+def record_test_result(result: str, w=None, conf=None, notes=None):
     test_index = get_test_index()
-    test_record = str(test_index)
-    test_record += ' - '
-    test_record += result
-    test_record += '\n'
+    test_record = f'{test_index} - {result} {notes if notes is not None else ""}\n'
     file = open(TEST_RESULT_PATH, 'a')
     file.write(test_record)
     file.close()
