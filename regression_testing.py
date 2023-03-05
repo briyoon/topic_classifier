@@ -3,35 +3,33 @@ from logistic_regression import *
 
 
 # penalty_term = 0.15
-learning_rate = 0.01
-total_iterations = 2_000
-train_size = 4_500
 ex_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/examples.npy'
 ex_class_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/example_classes.npy'
 
 [x, y, c] = get_training_data_bin(example_path=ex_path, example_class_path=ex_class_path)
-penalties = [0.15, 0.125, 0.1, 0.075, 0.05, 0.025, 0.0075, 0.005, 0.0025, 0.001]
+epochs = [1_000, 2_000, 3_000, 4_000, 5_000]
+penalties = [0.01, 0.0075, 0.005, 0.0025, 0.001]
+learning_rates = [0.01, 0.0075, 0.005, 0.0025, 0.001]
 
-for penalty_term in penalties:
-    indices = np.random.permutation(x.shape[0])
-    train, test = indices[:train_size], indices[train_size:]
-    x_train, x_test = x[train, :], x[test, :]
-    y_train, y_test = y[train], y[test]
+for learning_rate in learning_rates:
+    for penalty_term in penalties:
+        for epoch in epochs:
 
-    [w, t] = lg_fit(learning_rate=learning_rate,
-                    penalty=penalty_term,
-                    max_iterations=total_iterations,
-                    examples=x_train, target=y_train, classes=c,
-                    show_time=True)
+            [w, t] = lg_fit(learning_rate=learning_rate,
+                            penalty=penalty_term,
+                            max_iterations=epoch,
+                            examples=x, target=y, classes=c,
+                            show_time=True)
 
-    [acc, confusion_mat] = lg_test(x_test, y_test, w, c)
-    result_str = get_result_str(learning_rate=learning_rate,
-                                penalty=penalty_term,
-                                iterations=total_iterations,
-                                accuracy=acc,
-                                test_size=len(y_test),
-                                train_size=len(y_train),
-                                t=t)
+            [acc, confusion_mat] = lg_test(x, y, w, c)
+            result_str = get_result_str(learning_rate=learning_rate,
+                                        penalty=penalty_term,
+                                        iterations=epoch,
+                                        accuracy=acc,
+                                        test_size=len(y),
+                                        train_size=len(y),
+                                        t=t)
 
-    # can ignore weights or confusion matrix, default is none
-    record_test_result(result_str, w, confusion_mat)
+            # can ignore weights or confusion matrix, default is none
+            record_test_result(result_str, w, confusion_mat, notes='full dataset, for final submission')
+
