@@ -136,3 +136,38 @@ def lg_test(x_test: npt.NDArray,
     accuracy = correct / m
 
     return [accuracy, confusion]
+
+
+def lg_predict(x: npt.NDArray,
+               weights: npt.NDArray,
+               classes: any):
+    m = len(x)
+    k = len(classes)
+
+    if len(x[0]) != len(weights[0]):
+        x = get_padded_examples(x)
+
+    p_mat = get_prob_matrix(samples=x, weights=weights)
+    pred = np.ones(shape=(m, 1))
+
+    for instance in range(0, m):
+        predicted = -1
+        max_prob = -1
+        for cls in range(0, k):
+            if p_mat[cls][instance] > max_prob:
+                predicted = classes[cls]
+                max_prob = p_mat[cls][instance]
+        if predicted == -1:
+            print(f'error with prediction for example {instance}')
+            continue
+        pred[instance] = predicted
+
+    return pred
+
+
+def lg_gen_predictions(pred_file_name: str, x: npt.NDArray, w: npt.NDArray, c: npt.NDArray):
+    y = lg_predict(x=x, weights=w, classes=c)
+    np.savetxt(fname=pred_file_name,
+               X=y, delimiter=',',
+               header='pred',
+               fmt='%i', comments='')
