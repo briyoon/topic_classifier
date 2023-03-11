@@ -33,3 +33,13 @@ V1.1 acc 87.15%
 31 - 2023-03-05 14:31:41 rate=0.01, penalty=0.005, iter=1000, acc=0.7, t=685.37s, train=4500, test=7500 
 32 - 2023-03-05 14:43:46 rate=0.01, penalty=0.0025, iter=1000, acc=0.71, t=688.28s, train=4500, test=7500 
 33 - 2023-03-05 14:55:46 rate=0.01, penalty=0.001, iter=1000, acc=0.7, t=683.49s, train=4500, test=7500 
+34 - 2023-03-05 16:11:09 rate=0.01, penalty=0.01, iter=1000, acc=1.0, t=1843.17s, train=12000, test=12000 full dataset, for final submission
+35 - 2023-03-05 17:13:01 rate=0.01, penalty=0.01, iter=2000, acc=1.0, t=3704.14s, train=12000, test=12000 full dataset, for final submission
+36 - 2023-03-05 18:45:17 rate=0.01, penalty=0.01, iter=3000, acc=1.0, t=5528.3s, train=12000, test=12000 full dataset, for final submission
+37 - 2023-03-05 20:48:46 rate=0.01, penalty=0.01, iter=4000, acc=1.0, t=7400.16s, train=12000, test=12000 full dataset, for final submission
+38 - 2023-03-05 23:26:28 rate=0.01, penalty=0.01, iter=5000, acc=1.0, t=9184.81s, train=12000, test=12000 full dataset, for final submission
+39 - 2023-03-06 00:07:28 rate=0.0075, penalty=0.0075, iter=1000, acc=0, t=1930.63s, train=0, test=0 full dataset, for final submission
+40 - 2023-03-06 00:49:09 rate=0.005, penalty=0.005, iter=1000, acc=0, t=1811.95s, train=0, test=0 full dataset, for final submission
+41 - 2023-03-06 01:19:31 rate=0.005, penalty=0.0025, iter=1000, acc=0, t=1821.76s, train=0, test=0 full dataset, for final submission
+42 - 2023-03-06 01:49:47 rate=0.005, penalty=0.001, iter=1000, acc=0, t=1816.49s, train=0, test=0 full dataset, for final submission
+43 - 2023-03-06 02:19:55 rate=0.0025, penalty=0.005, iter=1000, acc=0, t=1807.55s, train=0, test=0 full dataset, for final submission
