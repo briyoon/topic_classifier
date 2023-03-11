@@ -68,20 +68,18 @@ def lg_fit(learning_rate, penalty, max_iterations,
            examples: npt.NDArray,
            target: npt.NDArray,
            classes: any,
-           show_time=False):
+           w: npt.NDArray = None):
     k = len(classes)
     n = len(examples[0])
 
     start = time.time()
     x = get_padded_examples(examples)
-    w = np.random.rand(k, n + 1)
+    if w is None:
+        w = np.random.rand(k, n + 1)
     delta = get_delta_matrix(class_list=classes, example_classes=target)
-    p_mat = get_prob_matrix(samples=x, weights=w)
     iterations = 0
 
     while iterations < max_iterations:
-        if show_time and iterations % (max_iterations / 100) == 0:
-            print('.', end="")
         p_mat = get_prob_matrix(samples=x, weights=w)
         error_mat = np.add(delta, (-1 * p_mat))
         sample_error_mat = np.matmul(error_mat, x)
@@ -91,8 +89,6 @@ def lg_fit(learning_rate, penalty, max_iterations,
         iterations += 1
 
     end = time.time()
-    if show_time:
-        print('')
 
     return [w, end - start]
 
@@ -165,9 +161,14 @@ def lg_predict(x: npt.NDArray,
     return pred
 
 
-def lg_gen_predictions(pred_file_name: str, x: npt.NDArray, w: npt.NDArray, c: npt.NDArray):
+def lg_gen_predictions(pred_file_name: str,
+                       x: npt.NDArray,
+                       w: npt.NDArray,
+                       c: npt.NDArray,
+                       ids: npt.NDArray):
     y = lg_predict(x=x, weights=w, classes=c)
+    prediction = np.column_stack((ids, y))
     np.savetxt(fname=pred_file_name,
-               X=y, delimiter=',',
-               header='pred',
+               X=prediction, delimiter=',',
+               header='id,class',
                fmt='%i', comments='')
