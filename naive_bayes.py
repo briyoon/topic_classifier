@@ -1,8 +1,6 @@
-import csv
 import pickle
 import numpy as np
 import pandas as pd
-
 import os
 
 
@@ -39,10 +37,9 @@ def get_vocab_df():
 def get_label_word_freqs(training_df, label_df, vocab_df, vocab_size):
     label_word_freq_path = 'resources/label_word_freq.pickle'
     label_word_freqs = {}
-    label_word_freq_np = []
 
     if (os.path.isfile(label_word_freq_path)):
-        label_word_freq_np = np.load(label_word_freq_path, allow_pickle=True)
+        label_word_freqs = np.load(label_word_freq_path, allow_pickle=True)
     else:
         for y in label_df['id']:
             word_counts = [0] * (vocab_size + 1)
@@ -53,14 +50,22 @@ def get_label_word_freqs(training_df, label_df, vocab_df, vocab_size):
                     word_counts[x] += doc[x]
 
             label_word_freqs[y] = word_counts
-        label_word_freq_np = label_word_freqs
 
         with open('label_word_freq.pickle', 'wb') as handle:
             pickle.dump(label_word_freqs, handle,
                         protocol=pickle.HIGHEST_PROTOCOL)
+    return label_word_freqs
 
-    return label_word_freq_np
 
+def find_accuracy(original_df, pred_df):
+    num_correct = 0
+    index = 0
+    for i, doc in pred_df.iterrows():
+        if (doc['pred'] == original_df.iloc[index,-1]):
+            num_correct+= 1
+        index += 1
+        
+    return num_correct/len(original_df)
 
 def train_naive_bayes(label_df, num_docs, num_words, alpha, label_word_freqs):
 
@@ -71,16 +76,15 @@ def train_naive_bayes(label_df, num_docs, num_words, alpha, label_word_freqs):
         priors[label['id']] = label['doc_count'] / num_docs
 
     # MAP - Conditional probability for X_i given Y_k
-    cond_probs = np.zeros((num_labels, num_words))
+    cond_probs = np.zeros((num_labels - 1, num_words - 1))
     for __, label in label_df.iterrows():
         label_word_counts = np.array(label_word_freqs[label['id']])
         label_total_words = np.sum(label_word_counts, axis=0)
         num = label_word_counts + (alpha - 1)
         den = label_total_words + ((alpha - 1) * num_words)
-        cond_probs[label['id']] = (num / den)[1:]
+        cond_probs[label['id'] - 1] = (num / den)[1:]
 
     return priors, cond_probs
-
 
 def naive_bayes_classify(new_doc, priors, cond_probs, num_labels):
     label_probs = np.zeros(num_labels)
