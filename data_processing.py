@@ -3,6 +3,10 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import re
+import numpy.typing as npt
+from scipy import sparse
+
+from logistic_regression import get_padded_examples
 
 COLUMN_WISE_AXIS = 1
 TOTAL_CLASSES = 20
@@ -121,12 +125,54 @@ def save_training_data_bin(example_path: str,
     np.save(sample_class_bin_filename, y)
 
 
-def save_test_data_bin(test_path: str,
+# assuming normalized, uses absolute max normalization by feature
+def save_test_data_bin(test_csv_path: str,
                        test_sample_filename='test_examples.npy',
-                       test_id_filename='test_ids.npy'):
-    data = pd.read_csv(test_path, header=None)
+                       test_id_filename='test_ids.npy',
+                       normalized=True):
+    data = pd.read_csv(test_csv_path, header=None)
     data = data.to_numpy(dtype='float', na_value=np.NAN)
     ids = data[:, 0]
+
+    # only delete the first col since test data doesn't have classes in last col
     x = np.delete(data, axis=COLUMN_WISE_AXIS, obj=0)
+    if normalized:
+        for col in range(0, len(x[0])):
+            abs_max = np.max(x[:, col])
+            if abs_max == 0:
+                continue
+            x[:, col] /= abs_max
     np.save(test_sample_filename, x)
     np.save(test_id_filename, ids)
+
+
+def save_training_samples_sparse(training_data_path: str,
+                                 sample_bin_filename='sample_numpy_bin.npy',
+                                 sample_bin_trans_filename='sample_class_numpy_bin.npy',
+                                 from_numpy=True, normalized=True):
+    x: npt.NDArray
+    # assuming saved training data is not padded, n features instead of n + 1
+    if from_numpy:
+        x = np.load(training_data_path)
+    else:
+        x, _, _ = get_training_data(training_path=training_data_path)
+
+    if normalized:
+        for col in range(0, len(x[0])):
+            abs_max = np.max(x[:, col])
+            if abs_max == 0:
+                continue
+            x[:, col] /= abs_max
+        sample_bin_filename = f'norm_{sample_bin_filename}'
+        sample_bin_trans_filename = f'norm_{sample_bin_trans_filename}'
+
+    # adding ones to the sparse matrices in advance
+    x = get_padded_examples(x)
+    sparse.save_npz(sample_bin_filename, sparse.coo_matrix(x))
+    sparse.save_npz(sample_bin_trans_filename, sparse.coo_matrix(x.transpose()))
+
+
+def get_sparse_train_data(x_path: str, x_trans_path: str):
+    x = sparse.load_npz(x_path)
+    x_t = sparse.load_npz(x_trans_path)
+    return [x, x_t]
