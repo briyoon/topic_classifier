@@ -127,6 +127,6 @@ def save_test_data_bin(test_path: str,
     data = pd.read_csv(test_path, header=None)
     data = data.to_numpy(dtype='float', na_value=np.NAN)
     ids = data[:, 0]
-    x = np.delete(data, COLUMN_WISE_AXIS, obj=0)
+    x = np.delete(data, axis=COLUMN_WISE_AXIS, obj=0)
     np.save(test_sample_filename, x)
     np.save(test_id_filename, ids)
