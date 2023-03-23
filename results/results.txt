@@ -84,3 +84,92 @@ V1.1 acc 87.15%
 82 - 2023-03-12 18:14:35 rate=0.005, penalty=0.001, iter=5000, acc=1.0, t=1902.4s, train=12000, test=12000 full dataset, for final submission
 83 - 2023-03-12 18:45:55 rate=0.0025, penalty=0.0075, iter=1000, acc=1.0, t=1875.21s, train=12000, test=12000 full dataset, for final submission
 84 - 2023-03-12 19:17:00 rate=0.0025, penalty=0.0075, iter=2000, acc=1.0, t=1860.39s, train=12000, test=12000 full dataset, for final submission
+85 - 2023-03-12 19:48:06 rate=0.0025, penalty=0.0075, iter=3000, acc=1.0, t=1857.63s, train=12000, test=12000 full dataset, for final submission
+86 - 2023-03-12 20:19:00 rate=0.0025, penalty=0.0075, iter=4000, acc=1.0, t=1849.34s, train=12000, test=12000 full dataset, for final submission
+87 - 2023-03-12 20:49:57 rate=0.0025, penalty=0.0075, iter=5000, acc=1.0, t=1850.4s, train=12000, test=12000 full dataset, for final submission
+88 - 2023-03-12 21:20:46 rate=0.0025, penalty=0.005, iter=1000, acc=1.0, t=1843.2s, train=12000, test=12000 full dataset, for final submission
+89 - 2023-03-12 21:51:32 rate=0.0025, penalty=0.005, iter=2000, acc=1.0, t=1839.58s, train=12000, test=12000 full dataset, for final submission
+90 - 2023-03-12 22:22:24 rate=0.0025, penalty=0.005, iter=3000, acc=1.0, t=1844.89s, train=12000, test=12000 full dataset, for final submission
+91 - 2023-03-12 22:52:59 rate=0.0025, penalty=0.005, iter=4000, acc=1.0, t=1830.11s, train=12000, test=12000 full dataset, for final submission
+92 - 2023-03-12 23:23:33 rate=0.0025, penalty=0.005, iter=5000, acc=1.0, t=1828.53s, train=12000, test=12000 full dataset, for final submission
+93 - 2023-03-12 23:54:19 rate=0.0025, penalty=0.0025, iter=1000, acc=1.0, t=1839.02s, train=12000, test=12000 full dataset, for final submission
+94 - 2023-03-13 00:24:59 rate=0.0025, penalty=0.0025, iter=2000, acc=1.0, t=1832.47s, train=12000, test=12000 full dataset, for final submission
+95 - 2023-03-13 00:55:33 rate=0.0025, penalty=0.0025, iter=3000, acc=1.0, t=1828.99s, train=12000, test=12000 full dataset, for final submission
+96 - 2023-03-13 01:53:48 rate=0.01, penalty=0.01, iter=1000, acc=0.57, t=1858.88s, train=12000, test=12000 full dataset, for final submission
+97 - 2023-03-13 02:24:59 rate=0.01, penalty=0.01, iter=2000, acc=0.57, t=1861.99s, train=12000, test=12000 full dataset, for final submission
+98 - 2023-03-13 03:08:05 rate=0.01, penalty=0.01, iter=1000, acc=1.0, t=1862.97s, train=12000, test=12000 full dataset, for final submission
+99 - 2023-03-13 11:59:01 rate=0.01, penalty=0.01, iter=2000, acc=1.0, t=1859.48s, train=12000, test=12000 full dataset, for final submission
+100 - 2023-03-13 12:31:16 rate=0.01, penalty=0.01, iter=3000, acc=1.0, t=1925.8s, train=12000, test=12000 full dataset, for final submission
+101 - 2023-03-13 13:02:30 rate=0.01, penalty=0.01, iter=4000, acc=1.0, t=1866.79s, train=12000, test=12000 full dataset, for final submission
+102 - 2023-03-13 13:33:43 rate=0.01, penalty=0.01, iter=5000, acc=1.0, t=1867.09s, train=12000, test=12000 full dataset, for final submission
+103 - 2023-03-13 14:38:23 rate=0.01, penalty=0.0075, iter=1000, acc=1.0, t=1855.71s, train=12000, test=12000 full dataset, for final submission
+104 - 2023-03-13 15:09:40 rate=0.01, penalty=0.0075, iter=2000, acc=1.0, t=1872.75s, train=12000, test=12000 full dataset, for final submission
+105 - 2023-03-13 15:41:12 rate=0.01, penalty=0.0075, iter=3000, acc=1.0, t=1885.91s, train=12000, test=12000 full dataset, for final submission
+106 - 2023-03-13 16:12:55 rate=0.01, penalty=0.0075, iter=4000, acc=1.0, t=1896.33s, train=12000, test=12000 full dataset, for final submission
+107 - 2023-03-13 16:44:35 rate=0.01, penalty=0.0075, iter=5000, acc=1.0, t=1895.08s, train=12000, test=12000 full dataset, for final submission
+108 - 2023-03-13 17:16:17 rate=0.01, penalty=0.005, iter=1000, acc=1.0, t=1897.16s, train=12000, test=12000 full dataset, for final submission
+109 - 2023-03-13 17:47:55 rate=0.01, penalty=0.005, iter=2000, acc=1.0, t=1893.18s, train=12000, test=12000 full dataset, for final submission
+110 - 2023-03-13 18:20:28 rate=0.01, penalty=0.005, iter=3000, acc=1.0, t=1944.98s, train=12000, test=12000 full dataset, for final submission
+111 - 2023-03-13 18:52:17 rate=0.01, penalty=0.005, iter=4000, acc=1.0, t=1904.36s, train=12000, test=12000 full dataset, for final submission
+112 - 2023-03-13 19:24:19 rate=0.01, penalty=0.005, iter=5000, acc=1.0, t=1914.75s, train=12000, test=12000 full dataset, for final submission
+113 - 2023-03-13 19:56:04 rate=0.01, penalty=0.0025, iter=1000, acc=1.0, t=1899.3s, train=12000, test=12000 full dataset, for final submission
+114 - 2023-03-13 20:27:41 rate=0.01, penalty=0.0025, iter=2000, acc=1.0, t=1892.04s, train=12000, test=12000 full dataset, for final submission
+115 - 2023-03-13 20:59:25 rate=0.01, penalty=0.0025, iter=3000, acc=1.0, t=1897.46s, train=12000, test=12000 full dataset, for final submission
+116 - 2023-03-13 21:31:03 rate=0.01, penalty=0.0025, iter=4000, acc=1.0, t=1892.04s, train=12000, test=12000 full dataset, for final submission
+117 - 2023-03-13 22:02:37 rate=0.01, penalty=0.0025, iter=5000, acc=1.0, t=1887.84s, train=12000, test=12000 full dataset, for final submission
+118 - 2023-03-13 22:34:07 rate=0.01, penalty=0.001, iter=1000, acc=1.0, t=1885.26s, train=12000, test=12000 full dataset, for final submission
+119 - 2023-03-13 23:05:52 rate=0.01, penalty=0.001, iter=2000, acc=1.0, t=1897.22s, train=12000, test=12000 full dataset, for final submission
+120 - 2023-03-13 23:37:40 rate=0.01, penalty=0.001, iter=3000, acc=1.0, t=1901.32s, train=12000, test=12000 full dataset, for final submission
+121 - 2023-03-14 00:09:21 rate=0.01, penalty=0.001, iter=4000, acc=1.0, t=1893.89s, train=12000, test=12000 full dataset, for final submission
+122 - 2023-03-20 15:56:50 rate=0.01, penalty=0.001, iter=5000, acc=0, t=327.49s, train=12000, test=12000 full dataset, for final submission
+123 - 2023-03-20 16:02:08 rate=0.005, penalty=0.001, iter=6000, acc=0, t=317.52s, train=12000, test=12000 full dataset, for final submission
+124 - 2023-03-20 16:07:21 rate=0.0025, penalty=0.001, iter=7000, acc=0, t=312.68s, train=12000, test=12000 full dataset, for final submission
+125 - 2023-03-20 16:12:31 rate=0.00125, penalty=0.001, iter=8000, acc=0, t=310.58s, train=12000, test=12000 full dataset, for final submission
+126 - 2023-03-20 16:17:42 rate=0.000625, penalty=0.001, iter=9000, acc=0, t=310.25s, train=12000, test=12000 full dataset, for final submission
+127 - 2023-03-20 16:22:52 rate=0.0003125, penalty=0.001, iter=10000, acc=0, t=310.28s, train=12000, test=12000 full dataset, for final submission
+128 - 2023-03-20 16:42:48 rate=0.01, penalty=0.001, iter=6000, acc=0, t=312.38s, train=12000, test=12000 full dataset, for final submission
+129 - 2023-03-20 16:47:54 rate=0.01, penalty=0.001, iter=7000, acc=0, t=305.41s, train=12000, test=12000 full dataset, for final submission
+130 - 2023-03-20 16:52:59 rate=0.01, penalty=0.001, iter=8000, acc=0, t=305.34s, train=12000, test=12000 full dataset, for final submission
+131 - 2023-03-20 16:58:04 rate=0.01, penalty=0.001, iter=9000, acc=0, t=304.57s, train=12000, test=12000 full dataset, for final submission
+132 - 2023-03-20 17:03:17 rate=0.01, penalty=0.001, iter=10000, acc=0, t=313.3s, train=12000, test=12000 full dataset, for final submission
+133 - 2023-03-20 17:09:50 rate=0.001, penalty=0.001, iter=10000, acc=0, t=319.03s, train=12000, test=12000 full dataset, for final submission
+134 - 2023-03-20 17:15:03 rate=0.001, penalty=0.001, iter=11000, acc=0, t=312.27s, train=12000, test=12000 full dataset, for final submission
+135 - 2023-03-20 17:20:15 rate=0.001, penalty=0.001, iter=12000, acc=0, t=311.82s, train=12000, test=12000 full dataset, for final submission
+136 - 2023-03-20 17:25:26 rate=0.001, penalty=0.001, iter=13000, acc=0, t=311.68s, train=12000, test=12000 full dataset, for final submission
+137 - 2023-03-20 22:14:39 rate=0.01, penalty=0.001, iter=1000, acc=0, t=345.81s, train=12000, test=12000 full dataset, for final submission
+138 - 2023-03-20 22:55:10 rate=0.01, penalty=0.001, iter=1000, acc=0, t=302.99s, train=12000, test=12000 abs-max scaled data
+139 - 2023-03-20 23:00:08 rate=0.01, penalty=0.001, iter=2000, acc=0, t=298.04s, train=12000, test=12000 abs-max scaled data
+140 - 2023-03-20 23:05:10 rate=0.01, penalty=0.001, iter=3000, acc=0, t=301.99s, train=12000, test=12000 abs-max scaled data
+141 - 2023-03-20 23:10:06 rate=0.01, penalty=0.001, iter=4000, acc=0, t=295.67s, train=12000, test=12000 abs-max scaled data
+142 - 2023-03-20 23:15:01 rate=0.01, penalty=0.001, iter=5000, acc=0, t=294.89s, train=12000, test=12000 abs-max scaled data
+143 - 2023-03-20 23:19:56 rate=0.01, penalty=0.001, iter=6000, acc=0, t=295.29s, train=12000, test=12000 abs-max scaled data
+144 - 2023-03-20 23:24:55 rate=0.01, penalty=0.001, iter=7000, acc=0, t=298.2s, train=12000, test=12000 abs-max scaled data
+145 - 2023-03-20 23:29:51 rate=0.01, penalty=0.001, iter=8000, acc=0, t=296.8s, train=12000, test=12000 abs-max scaled data
+146 - 2023-03-20 23:34:46 rate=0.01, penalty=0.001, iter=9000, acc=0, t=294.84s, train=12000, test=12000 abs-max scaled data
+147 - 2023-03-20 23:39:41 rate=0.01, penalty=0.001, iter=10000, acc=0, t=294.29s, train=12000, test=12000 abs-max scaled data
+148 - 2023-03-20 23:44:33 rate=0.01, penalty=0.001, iter=11000, acc=0, t=292.63s, train=12000, test=12000 abs-max scaled data
+149 - 2023-03-20 23:49:28 rate=0.01, penalty=0.001, iter=12000, acc=0, t=294.55s, train=12000, test=12000 abs-max scaled data
+150 - 2023-03-20 23:54:20 rate=0.01, penalty=0.001, iter=13000, acc=0, t=291.94s, train=12000, test=12000 abs-max scaled data
+151 - 2023-03-20 23:59:14 rate=0.01, penalty=0.001, iter=14000, acc=0, t=293.94s, train=12000, test=12000 abs-max scaled data
+152 - 2023-03-21 00:31:35 rate=0.01, penalty=0.001, iter=15000, acc=0, t=304.91s, train=12000, test=12000 abs-max scaled data
+153 - 2023-03-21 00:36:36 rate=0.01, penalty=0.001, iter=16000, acc=0, t=300.66s, train=12000, test=12000 abs-max scaled data
+154 - 2023-03-21 00:41:28 rate=0.01, penalty=0.001, iter=17000, acc=0, t=291.53s, train=12000, test=12000 abs-max scaled data
+155 - 2023-03-21 00:46:19 rate=0.01, penalty=0.001, iter=18000, acc=0, t=290.86s, train=12000, test=12000 abs-max scaled data
+156 - 2023-03-21 00:51:09 rate=0.01, penalty=0.001, iter=19000, acc=0, t=290.54s, train=12000, test=12000 abs-max scaled data
+157 - 2023-03-21 00:55:59 rate=0.01, penalty=0.001, iter=20000, acc=0, t=290.31s, train=12000, test=12000 abs-max scaled data
+158 - 2023-03-21 01:07:53 rate=0.01, penalty=0.001, iter=21000, acc=0, t=295.9s, train=12000, test=12000 abs-max scaled data
+159 - 2023-03-21 01:12:46 rate=0.005, penalty=0.001, iter=22000, acc=0, t=292.89s, train=12000, test=12000 abs-max scaled data
+160 - 2023-03-21 01:17:39 rate=0.0025, penalty=0.001, iter=23000, acc=0, t=292.93s, train=12000, test=12000 abs-max scaled data
+161 - 2023-03-21 01:22:32 rate=0.00125, penalty=0.001, iter=24000, acc=0, t=292.94s, train=12000, test=12000 abs-max scaled data
+162 - 2023-03-21 01:27:25 rate=0.000625, penalty=0.001, iter=25000, acc=0, t=293.11s, train=12000, test=12000 abs-max scaled data
+163 - 2023-03-21 01:32:18 rate=0.0003125, penalty=0.001, iter=26000, acc=0, t=293.06s, train=12000, test=12000 abs-max scaled data
+164 - 2023-03-21 01:37:11 rate=0.00015625, penalty=0.001, iter=27000, acc=0, t=292.93s, train=12000, test=12000 abs-max scaled data
+165 - 2023-03-21 01:42:07 rate=7.8125e-05, penalty=0.001, iter=28000, acc=0, t=295.65s, train=12000, test=12000 abs-max scaled data
+166 - 2023-03-21 01:47:09 rate=3.90625e-05, penalty=0.001, iter=29000, acc=0, t=302.47s, train=12000, test=12000 abs-max scaled data
+167 - 2023-03-21 01:56:25 rate=0.01, penalty=0.001, iter=22000, acc=0, t=308.79s, train=12000, test=12000 abs-max scaled data
+168 - 2023-03-21 02:01:34 rate=0.01, penalty=0.001, iter=23000, acc=0, t=309.01s, train=12000, test=12000 abs-max scaled data
+169 - 2023-03-21 02:06:51 rate=0.01, penalty=0.001, iter=24000, acc=0, t=316.69s, train=12000, test=12000 abs-max scaled data
+170 - 2023-03-21 02:12:09 rate=0.01, penalty=0.001, iter=25000, acc=0, t=317.65s, train=12000, test=12000 abs-max scaled data
+171 - 2023-03-21 02:17:10 rate=0.01, penalty=0.001, iter=26000, acc=0, t=301.19s, train=12000, test=12000 abs-max scaled data
+172 - 2023-03-21 02:22:03 rate=0.01, penalty=0.001, iter=27000, acc=0, t=293.03s, train=12000, test=12000 abs-max scaled data
+173 - 2023-03-21 02:27:19 rate=0.01, penalty=0.001, iter=28000, acc=0, t=315.61s, train=12000, test=12000 abs-max scaled data

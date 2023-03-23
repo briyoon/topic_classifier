@@ -12,6 +12,7 @@ def get_padded_examples(training_examples):
     return padded_mat
 
 
+# semi-deprecated
 def get_prob_matrix(samples, weights):
     k = len(weights)
     m = len(samples)
@@ -172,3 +173,31 @@ def lg_gen_predictions(pred_file_name: str,
                X=prediction, delimiter=',',
                header='id,class',
                fmt='%i', comments='')
+
+
+def prob_mat(x_transpose, weights):
+    """
+    adding as a new function for now, will consolidate
+    added with revisions to softmax (no ones added)
+    and @ for matrix multiplication with sparse x_t
+    """
+    # WX -> (k, n + 1) x (n + 1, m) is k x m matrix
+    p_mat = weights @ x_transpose
+
+    # could try removing this with normalized train data
+    for i in range(0, len(p_mat[0])):
+        max_term = max(p_mat[:, i])
+        p_mat[:, i] -= max_term
+
+    # P[i][j] = exp(P[i][j])
+    p_mat = np.vectorize(np.exp)(p_mat)
+
+    # axis 0 -> cols, axis 1 -> rows
+    column_sums = p_mat.sum(axis=0)
+
+    # softmax
+    for i in range(0, len(column_sums)):
+        normal_term = 1 / column_sums[i]
+        p_mat[:, i] *= normal_term
+
+    return p_mat
