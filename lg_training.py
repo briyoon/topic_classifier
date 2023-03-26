@@ -19,7 +19,6 @@ train_size = 9_600
 if initialize:
     initialize_for_training(train_csv_path=train_csv_path, train_size=train_size)
 
-x_t_alt = sparse.load_npz('/Users/estefan/Desktop/artifacts/binaries/sparse_norm_p_ex.npz')
 x_train, x_test = sparse.load_npz('binaries/x_train.npz'), sparse.load_npz('binaries/x_test.npz')
 y_train, y_test = np.load('binaries/y_train.npy'), np.load('binaries/y_test.npy')
 train_lambda, train_eta, train_epsilon = 0.01, 0.01, 0.00001
