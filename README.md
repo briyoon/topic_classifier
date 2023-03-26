@@ -1,3 +1,12 @@
+# Naive Bayes and
+
+## Training and Testing
+- Run `naive_bayes.py`
+
+## Code
+- `naive_bayes.py` contains utilities for training, testing, and producing prediction files. Prediction results are saved to the `results` subdirectory. Predictions for test data are saved to `results/nb_pred.csv`. Visualizations of the confusion matrices are saved to `results/nb_confusion_matrix.png`, and the accuracy plot for beta hyper-parameter are saved to `results/nb_a_b_accuracy.png`. The list of 100 most informative words for NB are found in `results/most_informative_words.txt`.
+  - `nb_fit` fits the model to training data, given vectorized word counts `x`, and classes `y`.
+  - `nb_predict` takes a document `x_new` and returns the predicted class. 
 # Logistic Regression 
 
 ## Training and Testing
