@@ -1,52 +1,41 @@
 from data_processing import *
 from logistic_regression import *
 
-# set to true to save numpy binaries from training data
-# if you already have them saved replaces the paths for ex_bin_...
-run_initialize = False
+"""
+run with initialize to save binary files required for training
+the first time processing and saving data is ~10 minutes
+this reduces future testing and training time by a factor of 10 
+!!! IMPORTANT before running, create an empty directory 'binaries' in working dir
+"""
 
-path_to_training_csv = ''
-ex_bin_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/examples.npy'
-ex_bin_class_path = '/Users/estefan/Desktop/cs429529-project-2-topic-categorization/example_classes.npy'
+initialize = True
+save_results = False
+train_csv_path = ''
 
-if run_initialize:
-    # save the csv as numpy binaries
-    save_training_data_bin(example_path=path_to_training_csv)
+# total samples in train set, remainder in the test
+train_size = 9_600
 
-    # default file names, can change in call to save_training_data_bin
-    ex_bin_path = 'sample_numpy_bin.npy'
-    ex_bin_class_path = 'sample_class_numpy_bin.npy'
+# saves a test train split in numpy and scipy binaries
+if initialize:
+    initialize_for_training(train_csv_path=train_csv_path, train_size=train_size)
 
-# if you don't want to use numpy binaries:
-# replace call with get_training_data(path_to_training_csv)
-[x, y, c] = get_training_data_bin(example_path=ex_bin_path, example_class_path=ex_bin_class_path)
+x_t_alt = sparse.load_npz('/Users/estefan/Desktop/artifacts/binaries/sparse_norm_p_ex.npz')
+x_train, x_test = sparse.load_npz('binaries/x_train.npz'), sparse.load_npz('binaries/x_test.npz')
+y_train, y_test = np.load('binaries/y_train.npy'), np.load('binaries/y_test.npy')
+train_lambda, train_eta, train_epsilon = 0.01, 0.01, 0.00001
+max_iter = 1_000
 
-# check results.txt for completed training params
-# saved weights and confusion matrices are in 'results' directory
-penalties = [0.0075, 0.005, 0.0025, 0.001]
-learning_rates = [0.0075, 0.005, 0.0025, 0.001]
-max_train_iterations = 5_000
-k = len(c)
-n = len(x[0])
-for learning_rate in learning_rates:
-    for penalty_term in penalties:
-        iterations = 1_000
-        w = np.random.rand(k, n + 1)
-        while iterations <= max_train_iterations:
-            [w, t] = lg_fit(learning_rate=learning_rate,
-                            penalty=penalty_term,
-                            max_iterations=1_000,
-                            examples=x, target=y, classes=c, w=w)
-            [acc, confusion_mat] = lg_test(x, y, w, c)
-            result_str = get_result_str(learning_rate=learning_rate,
-                                        penalty=penalty_term,
-                                        iterations=iterations,
-                                        accuracy=acc,
-                                        test_size=len(y),
-                                        train_size=len(y),
-                                        t=t)
-            # will save the resulting weights and confusion mat + add entry to results.txt
-            record_test_result(result_str, w, confusion_mat, notes='full dataset, for final submission')
-            iterations += 1_000
+classes = get_classes()
+saved_weight_file = f'W_{train_eta}_{train_lambda}_{max_iter}.npy'
 
+w, acc, iters = lg_fit_sparse(learning_rate=train_eta, penalty_term=train_lambda,
+                              max_iterations=max_iter, x_train=x_train, y_train=y_train,
+                              classes=classes, epsilon_termination=True,
+                              x_test=x_test, y_test=y_test, epsilon=train_epsilon, verbose=True)
 
+print(f'hyper parameters: lr={train_eta}, pen={train_lambda}, epsilon={train_epsilon}')
+print(f'final accuracy in {iters} iterations: {acc}')
+
+if save_results:
+    np.save(saved_weight_file, w)
+    print(f'file {saved_weight_file} saved')
