@@ -1,15 +1,15 @@
 # Logistic Regression 
 
 ## Training and Testing
-- Completed training is recorded in `results.txt` displaying covered hyper parameters
-- Set hyper parameters in `lg_training.py`, configure training file paths and 
-wait for training to conclude. Resulting weights, confusion matrices, and records are saved in
-the results directory. 
-- `lg_predictions.py` has an example of how to save the test data,`x` and `ids`, as numpy binaries.
-  - Load `x`, `ids`, `weights`, and `classes` then call `lg_gen_predictions` with these arguments 
-  and the prediction csv file name as in 
-  `lg_gen_predictions('file.csv', x, w, classes, ids)`
-
+- Running for the first time:
+  - add a `binaries` folder to the working directory
+  - open `lg_training.py` and set `initialize = True` if not already 
+  - update `train_csv_path` to be the path to your train.csv file
+- After initialization
+  - maintain or update the given file names for the binaries in the `binaries` directory
+  - you can reinitialize to get a different test/train split by changing `train_size` in `lg_training`
+  - to run with the entire train set just set `train_size = 12_000`
+- Run `lg_training.py`, adjust hyper-parameters as desired in this file
 
 ## Code
 - `data_processing.py` used to process and fetch training/testing files from csv and numpy binary format

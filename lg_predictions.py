@@ -14,14 +14,16 @@ if run_initialize:
     test_sample_path = 'binaries/test_examples.npy'
     test_id_path = 'binaries/test_ids.npy'
 
-submission_index = 86
-weight_index = 172
+submission_index = 106
+weight_index = 246
+num_pred = 2
 
 # could load x_test and ids from a csv here
 classes = get_classes()
 x_test = np.load(test_sample_path)
 ids = np.load(test_id_path)
-for i in range(0, 1):
+
+for i in range(0, num_pred):
     weights = np.load(f'/Users/estefan/Desktop/final/WEIGHTS_{weight_index}.npy')
     lg_gen_predictions(pred_file_name=f'pred_{submission_index}_{weight_index}.csv',
                        x=x_test, w=weights, c=classes, ids=ids)

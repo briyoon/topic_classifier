@@ -176,3 +176,31 @@ def get_sparse_train_data(x_path: str, x_trans_path: str):
     x = sparse.load_npz(x_path)
     x_t = sparse.load_npz(x_trans_path)
     return [x, x_t]
+
+
+def initialize_for_training(train_csv_path: str, train_size=9_600):
+    print(f'beginning initialization')
+    x, y, _ = get_training_data(training_path=train_csv_path)
+
+    print(f'data extracted from csv \'{train_csv_path}\'')
+    for col in range(0, len(x[0])):
+        abs_max = np.max(x[:, col])
+        if abs_max == 0:
+            continue
+        x[:, col] /= abs_max
+    x = get_padded_examples(x)
+    indices = np.random.permutation(x.shape[0])
+    train, test = indices[:train_size], indices[train_size:]
+
+    x_train, x_test = x[train, :], x[test, :]
+    y_train, y_test = y[train], y[test]
+
+    print(f'data normalized, saving binaries')
+    x_train = sparse.coo_matrix(x_train)
+    x_test = sparse.coo_matrix(x_test)
+    sparse.save_npz('binaries/x_train.npz', x_train)
+    sparse.save_npz('binaries/x_test.npz', x_test)
+    np.save('binaries/y_train.npy', y_train)
+    np.save('binaries/y_test.npy', y_test)
+
+    print(f'data initialization complete')
